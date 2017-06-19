@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <aop:aspectj-autoproxy/>
+
+    <bean id="employee" class="model.Employee">
+        <property name="name" value="lak"/>
+    </bean>
+
+    <bean id="employeeService" class="service.EmployeeService">
+        <property name="employee" ref="employee"/>
+    </bean>
+
+    <!-- Configure Aspect Beans, without this Aspects advices wont execute -->
+    <!--<bean name="employeeAspect" class="aop.EmployeeAspect" />-->
+    <bean name="employeeAspectPointcut" class="aop.EmployeeAspectPointcut" />
+    <!--<bean name="employeeAspectJoinPoint" class="aop.EmployeeAspectJoinPoint" />-->
+    <!--<bean name="employeeAfterAspect" class="aop.EmployeeAfterAspect" />-->
+    <!--<bean name="employeeAroundAspect" class="aop.EmployeeAroundAspect" />-->
+    <!--<bean name="employeeAnnotationAspect" class="aop.EmployeeAnnotationAspect" />-->
+
+    <!--<bean name="employeeXMLConfigAspect" class="aop.xml.EmployeeXMLConfigAspect"/>-->
+    <!---->
+    <!--<aop:config>-->
+        <!--<aop:aspect id="employeeXMLConfigAspectId" ref="employeeXMLConfigAspect" order="1">-->
+            <!--<aop:pointcut id="getNamePointcut" expression="execution(* model.Employee.getName())"/>-->
+            <!--<aop:around method="employeeAroundAdvice" pointcut-ref="getNamePointcut" arg-names="proceedingJoinPoint"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+</beans>
